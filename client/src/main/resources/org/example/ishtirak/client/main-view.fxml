@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.ishtirak.client.MainController"
+            prefWidth="1180" prefHeight="740">
+    <left>
+        <VBox fx:id="menu" styleClass="side-menu">
+            <Label text="Ishtirak" styleClass="side-brand"/>
+            <Label fx:id="userLabel" styleClass="side-user"/>
+            <Button fx:id="dashboardButton" text="Dashboard" onAction="#handleDashboard" styleClass="menu-item"/>
+            <Button fx:id="subscribersButton" text="Subscribers" onAction="#handleSubscribers" styleClass="menu-item"/>
+            <Button fx:id="readingsButton" text="Monthly readings" onAction="#handleReadings" styleClass="menu-item"/>
+            <Button fx:id="tariffsButton" text="Tariffs" onAction="#handleTariffs" styleClass="menu-item"/>
+            <Button fx:id="billingButton" text="Billing run" onAction="#handleBilling" styleClass="menu-item"/>
+            <Button fx:id="paymentsButton" text="Payment counter" onAction="#handlePayments" styleClass="menu-item"/>
+            <Button fx:id="arrearsButton" text="Arrears" onAction="#handleArrears" styleClass="menu-item"/>
+            <Button fx:id="zonesButton" text="Zones" onAction="#handleZones" styleClass="menu-item"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Log out" onAction="#handleLogout" styleClass="menu-item, logout"/>
+        </VBox>
+    </left>
+    <top>
+        <HBox fx:id="connectionBanner" styleClass="banner">
+            <Label text="The server cannot be reached. Your last action was not saved."/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Retry" onAction="#handleRetry"/>
+        </HBox>
+    </top>
+    <center>
+        <StackPane>
+            <StackPane fx:id="content"/>
+            <ProgressIndicator fx:id="busyIndicator" maxWidth="34" maxHeight="34"
+                               StackPane.alignment="TOP_RIGHT" style="-fx-translate-x: -18; -fx-translate-y: 18;"/>
+        </StackPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.SubscriberDetailsController" styleClass="view">
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="Back to subscribers" onAction="#handleBack"/>
+        <Label fx:id="titleLabel" styleClass="view-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Balance"/>
+        <Label fx:id="balanceLabel" styleClass="figure-value"/>
+    </HBox>
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Profile">
+            <GridPane hgap="18" vgap="10" styleClass="panel">
+                <Label text="Phone" GridPane.rowIndex="0"/>
+                <Label fx:id="phoneLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Address" GridPane.rowIndex="1"/>
+                <Label fx:id="addressLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Zone" GridPane.rowIndex="2"/>
+                <Label fx:id="zoneLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Status" GridPane.rowIndex="3"/>
+                <Label fx:id="statusLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Subscriber since" GridPane.rowIndex="4"/>
+                <Label fx:id="createdLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </Tab>
+        <Tab text="Meters">
+            <HBox spacing="16" style="-fx-padding: 12 0 0 0;">
+                <TableView fx:id="subscriptionTable" HBox.hgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="meterColumn" text="Meter" prefWidth="130"/>
+                        <TableColumn fx:id="ampColumn" text="Amperage" prefWidth="80"/>
+                        <TableColumn fx:id="initialColumn" text="Initial reading" prefWidth="110"/>
+                        <TableColumn fx:id="startColumn" text="Start" prefWidth="100"/>
+                        <TableColumn fx:id="endColumn" text="End" prefWidth="100"/>
+                        <TableColumn fx:id="activeColumn" text="Status" prefWidth="80"/>
+                    </columns>
+                    <placeholder><Label text="No meter yet. Add one with the form."/></placeholder>
+                </TableView>
+                <VBox styleClass="panel" spacing="3" prefWidth="370" minWidth="370">
+                    <Label fx:id="subscriptionFormTitle" styleClass="panel-title"/>
+                    <Label text="Meter serial"/>
+                    <TextField fx:id="meterField"/>
+                    <Label fx:id="meterError" styleClass="field-error"/>
+                    <Label text="Amperage"/>
+                    <ComboBox fx:id="amperageBox" maxWidth="Infinity"/>
+                    <Label fx:id="amperageError" styleClass="field-error"/>
+                    <Label text="Initial reading (kWh)"/>
+                    <TextField fx:id="initialField"/>
+                    <Label fx:id="initialError" styleClass="field-error"/>
+                    <Label text="Start date"/>
+                    <DatePicker fx:id="startPicker" maxWidth="Infinity"/>
+                    <Label fx:id="startError" styleClass="field-error"/>
+                    <HBox spacing="8">
+                        <Button fx:id="addMeterButton" text="Add meter" onAction="#handleAddMeter" styleClass="primary"/>
+                        <Button fx:id="saveMeterButton" text="Save changes" onAction="#handleSaveMeter"/>
+                        <Button text="New" onAction="#clearSubscriptionForm"/>
+                    </HBox>
+                    <Separator style="-fx-padding: 8 0 4 0;"/>
+                    <Label text="End date"/>
+                    <HBox spacing="8">
+                        <DatePicker fx:id="endPicker" prefWidth="150"/>
+                        <Button fx:id="endButton" text="End subscription" onAction="#handleEndSubscription" styleClass="danger"/>
+                    </HBox>
+                    <Label fx:id="endError" styleClass="field-error"/>
+                    <Label fx:id="subscriptionMessage" styleClass="message" wrapText="true"/>
+                </VBox>
+            </HBox>
+        </Tab>
+        <Tab text="Invoices and payments">
+            <VBox spacing="10" style="-fx-padding: 12 0 0 0;">
+                <TableView fx:id="invoiceTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="invMonthColumn" text="Month" prefWidth="120"/>
+                        <TableColumn fx:id="invMeterColumn" text="Meter" prefWidth="120"/>
+                        <TableColumn fx:id="invKwhColumn" text="kWh" prefWidth="80"/>
+                        <TableColumn fx:id="invAmountColumn" text="Amount (LBP)" prefWidth="120"/>
+                        <TableColumn fx:id="invPaidColumn" text="Paid" prefWidth="110"/>
+                        <TableColumn fx:id="invBalanceColumn" text="Balance" prefWidth="110"/>
+                        <TableColumn fx:id="invStatusColumn" text="Status" prefWidth="80"/>
+                    </columns>
+                    <placeholder><Label text="No invoice yet."/></placeholder>
+                </TableView>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Payments of the selected invoice" styleClass="panel-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="voidButton" text="Void invoice" onAction="#handleVoid" styleClass="danger"/>
+                </HBox>
+                <TableView fx:id="paymentTable" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="payReceiptColumn" text="Receipt" prefWidth="150"/>
+                        <TableColumn fx:id="payAmountColumn" text="Amount" prefWidth="140"/>
+                        <TableColumn fx:id="payMethodColumn" text="Method" prefWidth="90"/>
+                        <TableColumn fx:id="payDateColumn" text="Paid at" prefWidth="140"/>
+                        <TableColumn fx:id="payByColumn" text="Received by" prefWidth="150"/>
+                    </columns>
+                    <placeholder><Label text="Select an invoice to see its payments."/></placeholder>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

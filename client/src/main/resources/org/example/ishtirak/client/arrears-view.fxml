@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.ArrearsController" styleClass="view">
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Label text="Arrears" styleClass="view-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="zoneBox" prefWidth="200"/>
+        <Button fx:id="refreshButton" text="Refresh" onAction="#handleRefresh"/>
+    </HBox>
+    <TableView fx:id="arrearsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Subscriber" prefWidth="220"/>
+            <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="130"/>
+            <TableColumn fx:id="zoneColumn" text="Zone" prefWidth="150"/>
+            <TableColumn fx:id="unpaidColumn" text="Unpaid invoices" prefWidth="120"/>
+            <TableColumn fx:id="balanceColumn" text="Balance" prefWidth="160"/>
+        </columns>
+        <placeholder><Label text="Nobody owes anything in this selection."/></placeholder>
+    </TableView>
+    <Label fx:id="totalLabel" styleClass="panel-title"/>
+</VBox>

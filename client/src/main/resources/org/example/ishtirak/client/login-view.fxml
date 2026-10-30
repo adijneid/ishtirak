@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.ishtirak.client.LoginController"
+           styleClass="login-pane" prefWidth="560" prefHeight="460">
+
+    <VBox styleClass="login-card" spacing="8" maxHeight="-Infinity">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Circle radius="7" styleClass="brand-lamp"/>
+            <Label text="Ishtirak" styleClass="brand"/>
+        </HBox>
+        <Label text="Billing for neighbourhood generators" styleClass="subtitle"/>
+
+        <Label text="Username" style="-fx-padding: 14 0 0 0;"/>
+        <TextField fx:id="usernameField" promptText="admin or collector" onAction="#handleLogin"/>
+        <Label fx:id="usernameError" styleClass="field-error"/>
+
+        <Label text="Password"/>
+        <PasswordField fx:id="passwordField" onAction="#handleLogin"/>
+        <Label fx:id="passwordError" styleClass="field-error"/>
+
+        <HBox spacing="10">
+            <Button fx:id="loginButton" text="Log in" onAction="#handleLogin" styleClass="primary" defaultButton="true"/>
+            <Button text="Clear" onAction="#handleClear"/>
+        </HBox>
+
+        <Label fx:id="messageLabel" styleClass="message" maxWidth="290"/>
+        <Label fx:id="serverLabel" styleClass="hint"/>
+    </VBox>
+</StackPane>

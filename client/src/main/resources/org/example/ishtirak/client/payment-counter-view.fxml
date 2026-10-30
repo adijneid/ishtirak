@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.PaymentCounterController" styleClass="view">
+    <Label text="Payment counter" styleClass="view-title"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Subscriber name or phone" prefWidth="260" onAction="#handleSearch"/>
+        <Button fx:id="searchButton" text="Find" onAction="#handleSearch"/>
+    </HBox>
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <TableView fx:id="subscriberTable" prefWidth="440" minWidth="440">
+            <columns>
+                <TableColumn fx:id="nameColumn" text="Subscriber" prefWidth="160"/>
+                <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="100"/>
+                <TableColumn fx:id="balanceColumn" text="Owes" prefWidth="110"/>
+            </columns>
+            <placeholder><Label text="Search for the subscriber who is paying."/></placeholder>
+        </TableView>
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <TableView fx:id="invoiceTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="monthColumn" text="Month" prefWidth="120"/>
+                    <TableColumn fx:id="meterColumn" text="Meter" prefWidth="110"/>
+                    <TableColumn fx:id="dueColumn" text="Amount (LBP)" prefWidth="110"/>
+                    <TableColumn fx:id="openColumn" text="Still owed" prefWidth="110"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="80"/>
+                </columns>
+                <placeholder><Label text="No open invoice for this subscriber."/></placeholder>
+            </TableView>
+            <HBox styleClass="panel" spacing="12" alignment="BOTTOM_LEFT">
+                <VBox spacing="3">
+                    <Label text="Amount (LBP)"/>
+                    <TextField fx:id="amountField" prefWidth="170"/>
+                    <Label fx:id="amountError" styleClass="field-error"/>
+                </VBox>
+                <VBox spacing="3">
+                    <Label text="Method"/>
+                    <ComboBox fx:id="methodBox" prefWidth="130"/>
+                    <Label fx:id="methodError" styleClass="field-error"/>
+                </VBox>
+                <VBox spacing="3">
+                    <Button fx:id="payButton" text="Record payment" onAction="#handlePay" styleClass="primary"/>
+                    <Label/>
+                </VBox>
+            </HBox>
+            <Label fx:id="messageLabel" styleClass="message" wrapText="true"/>
+            <Label fx:id="receiptLabel" styleClass="receipt" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>

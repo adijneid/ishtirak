@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.DashboardController" styleClass="view">
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Label text="Dashboard" styleClass="view-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="monthBox" prefWidth="170"/>
+        <Button fx:id="refreshButton" text="Refresh" onAction="#handleRefresh"/>
+    </HBox>
+    <HBox styleClass="panel">
+        <VBox styleClass="figure-box" minWidth="-Infinity">
+            <Label fx:id="billedLabel" styleClass="figure-value"/>
+            <Label text="Billed" styleClass="figure-label"/>
+        </VBox>
+        <VBox styleClass="figure-box" minWidth="-Infinity">
+            <Label fx:id="collectedLabel" styleClass="figure-value"/>
+            <Label text="Collected" styleClass="figure-label"/>
+        </VBox>
+        <VBox styleClass="figure-box, outstanding" minWidth="-Infinity">
+            <Label fx:id="outstandingLabel" styleClass="figure-value"/>
+            <Label text="Outstanding" styleClass="figure-label"/>
+        </VBox>
+        <VBox styleClass="figure-box" minWidth="-Infinity">
+            <Label fx:id="rateLabel" styleClass="figure-value"/>
+            <Label text="Collection rate" styleClass="figure-label"/>
+        </VBox>
+        <VBox styleClass="figure-box" minWidth="-Infinity">
+            <Label fx:id="missingLabel" styleClass="figure-value"/>
+            <Label text="Meters without a reading" styleClass="figure-label"/>
+        </VBox>
+    </HBox>
+    <BarChart fx:id="zoneChart" VBox.vgrow="ALWAYS" animated="false" styleClass="panel">
+        <xAxis>
+            <CategoryAxis label="Zone"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="LBP"/>
+        </yAxis>
+    </BarChart>
+</VBox>

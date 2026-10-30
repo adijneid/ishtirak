@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.ReadingsController" styleClass="view">
+    <Label text="Monthly readings" styleClass="view-title"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <ComboBox fx:id="monthBox" prefWidth="170"/>
+        <ComboBox fx:id="zoneBox" prefWidth="200"/>
+        <Button fx:id="loadButton" text="Load zone" onAction="#handleLoad"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="saveButton" text="Save readings" onAction="#handleSave" styleClass="primary"/>
+    </HBox>
+    <Label text="Double-click a cell in the Current column, type the meter value and press Enter. Grey rows are invoiced and locked." styleClass="hint" wrapText="true"/>
+    <TableView fx:id="readingTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="subscriberColumn" text="Subscriber" prefWidth="190" sortable="false"/>
+            <TableColumn fx:id="meterColumn" text="Meter" prefWidth="120" sortable="false"/>
+            <TableColumn fx:id="ampColumn" text="Amperage" prefWidth="80" sortable="false"/>
+            <TableColumn fx:id="previousColumn" text="Previous" prefWidth="100" sortable="false"/>
+            <TableColumn fx:id="currentColumn" text="Current" prefWidth="110" sortable="false"/>
+            <TableColumn fx:id="noteColumn" text="Check" prefWidth="380" sortable="false"/>
+        </columns>
+        <placeholder><Label text="No active meter in this zone for this month."/></placeholder>
+    </TableView>
+    <Label fx:id="summaryLabel" wrapText="true" styleClass="panel-title"/>
+</VBox>

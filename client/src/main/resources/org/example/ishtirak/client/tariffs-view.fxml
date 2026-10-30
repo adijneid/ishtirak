@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.TariffsController" styleClass="view">
+    <Label text="Monthly tariffs" styleClass="view-title"/>
+    <Label text="Enter the Ministry of Energy and Water values each month. Amounts are in Lebanese pounds." styleClass="hint"/>
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tariffTable" HBox.hgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="monthColumn" text="Month" prefWidth="130"/>
+                <TableColumn fx:id="priceColumn" text="Price per kWh" prefWidth="105"/>
+                <TableColumn fx:id="fee5Column" text="Fee 5 A" prefWidth="90"/>
+                <TableColumn fx:id="fee10Column" text="Fee 10 A" prefWidth="90"/>
+                <TableColumn fx:id="extraColumn" text="Each extra 5 A" prefWidth="105"/>
+                <TableColumn fx:id="upliftColumn" text="Rural %" prefWidth="70"/>
+                <TableColumn fx:id="lockedColumn" text="Status" prefWidth="120"/>
+            </columns>
+            <placeholder><Label text="No tariff yet. Enter this month's values with the form."/></placeholder>
+        </TableView>
+        <VBox styleClass="panel" spacing="8" prefWidth="320" minWidth="320">
+            <Label fx:id="formTitle" styleClass="panel-title"/>
+            <GridPane fx:id="form" hgap="10" vgap="2">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Month" GridPane.rowIndex="0"/>
+                <ComboBox fx:id="monthBox" maxWidth="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label fx:id="monthError" styleClass="field-error" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Price per kWh" GridPane.rowIndex="2"/>
+                <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label fx:id="priceError" styleClass="field-error" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Fee 5 A" GridPane.rowIndex="4"/>
+                <TextField fx:id="fee5Field" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label fx:id="fee5Error" styleClass="field-error" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                <Label text="Fee 10 A" GridPane.rowIndex="6"/>
+                <TextField fx:id="fee10Field" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                <Label fx:id="fee10Error" styleClass="field-error" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                <Label text="Each extra 5 A" GridPane.rowIndex="8"/>
+                <TextField fx:id="extraField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+                <Label fx:id="extraError" styleClass="field-error" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+                <Label text="Rural uplift %" GridPane.rowIndex="10"/>
+                <TextField fx:id="upliftField" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+                <Label fx:id="upliftError" styleClass="field-error" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+            </GridPane>
+            <HBox spacing="8">
+                <Button fx:id="saveButton" text="Save tariff" onAction="#handleSave" styleClass="primary"/>
+                <Button text="New" onAction="#handleNew"/>
+            </HBox>
+            <Label fx:id="messageLabel" styleClass="message" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>

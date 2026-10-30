@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.SubscribersController" styleClass="view">
+    <Label text="Subscribers" styleClass="view-title"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Name or phone" prefWidth="220" onAction="#handleSearch"/>
+        <ComboBox fx:id="zoneFilter" prefWidth="180"/>
+        <ComboBox fx:id="statusFilter" prefWidth="130"/>
+        <Button fx:id="searchButton" text="Search" onAction="#handleSearch"/>
+    </HBox>
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <VBox spacing="8" HBox.hgrow="ALWAYS">
+            <TableView fx:id="subscriberTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="190"/>
+                    <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="110"/>
+                    <TableColumn fx:id="zoneColumn" text="Zone" prefWidth="130"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="70"/>
+                    <TableColumn fx:id="balanceColumn" text="Balance" prefWidth="130"/>
+                </columns>
+                <placeholder><Label text="No subscriber matches this search."/></placeholder>
+            </TableView>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Button fx:id="previousButton" text="Previous" onAction="#handlePrevious"/>
+                <Button fx:id="nextButton" text="Next" onAction="#handleNext"/>
+                <Label fx:id="pageLabel" styleClass="hint"/>
+            </HBox>
+        </VBox>
+        <VBox fx:id="formPanel" styleClass="panel" spacing="4" prefWidth="300" minWidth="300">
+            <Label fx:id="formTitle" styleClass="panel-title"/>
+            <Label text="Full name"/>
+            <TextField fx:id="nameField"/>
+            <Label fx:id="nameError" styleClass="field-error"/>
+            <Label text="Phone"/>
+            <TextField fx:id="phoneField" promptText="03 123456"/>
+            <Label fx:id="phoneError" styleClass="field-error" wrapText="true"/>
+            <Label text="Address (optional)"/>
+            <TextField fx:id="addressField"/>
+            <Label fx:id="addressError" styleClass="field-error"/>
+            <Label text="Zone"/>
+            <ComboBox fx:id="zoneField" maxWidth="Infinity"/>
+            <Label fx:id="zoneError" styleClass="field-error"/>
+            <HBox spacing="8" style="-fx-padding: 6 0 0 0;">
+                <Button fx:id="saveButton" text="Save subscriber" onAction="#handleSave" styleClass="primary"/>
+                <Button text="New" onAction="#handleNew"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button fx:id="detailsButton" text="Open details" onAction="#handleDetails"/>
+                <Button fx:id="closeButton" text="Close subscriber" onAction="#handleClose" styleClass="danger"/>
+            </HBox>
+            <Label fx:id="messageLabel" styleClass="message" wrapText="true"/>
+            <Label text="Double-click a row to open its details." styleClass="hint" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>

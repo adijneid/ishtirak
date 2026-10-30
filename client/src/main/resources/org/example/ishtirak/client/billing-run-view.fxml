@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.BillingRunController" styleClass="view">
+    <Label text="Billing run" styleClass="view-title"/>
+    <Label text="Generates every invoice of the month with the ministry formula. Running it again only bills new readings." styleClass="hint" wrapText="true"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <ComboBox fx:id="monthBox" prefWidth="170"/>
+        <Button fx:id="checkButton" text="Check readings" onAction="#handleCheck"/>
+        <Button fx:id="runButton" text="Generate invoices" onAction="#handleRun" styleClass="primary"/>
+    </HBox>
+    <Label fx:id="previewLabel" wrapText="true"/>
+    <Label fx:id="resultLabel" styleClass="success" wrapText="true"/>
+    <Label text="Meters without a reading" styleClass="panel-title"/>
+    <TableView fx:id="missingTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="zoneColumn" text="Zone" prefWidth="170"/>
+            <TableColumn fx:id="subscriberColumn" text="Subscriber" prefWidth="230"/>
+            <TableColumn fx:id="meterColumn" text="Meter" prefWidth="150"/>
+        </columns>
+        <placeholder><Label text="Every active meter has a reading for this month."/></placeholder>
+    </TableView>
+</VBox>

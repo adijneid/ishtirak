@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.ishtirak.client.ZonesController" styleClass="view">
+    <Label text="Zones" styleClass="view-title"/>
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+        <TableView fx:id="zoneTable" HBox.hgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="nameColumn" text="Zone" prefWidth="240"/>
+                <TableColumn fx:id="ruralColumn" text="Area" prefWidth="160"/>
+                <TableColumn fx:id="countColumn" text="Subscribers" prefWidth="110"/>
+            </columns>
+            <placeholder><Label text="No zones yet. Add the first one with the form."/></placeholder>
+        </TableView>
+        <VBox styleClass="panel" spacing="6" prefWidth="300" minWidth="300">
+            <Label fx:id="formTitle" styleClass="panel-title"/>
+            <Label text="Name"/>
+            <TextField fx:id="nameField"/>
+            <Label fx:id="nameError" styleClass="field-error"/>
+            <CheckBox fx:id="ruralCheck" text="Rural or mountain area (kWh uplift applies)" wrapText="true"/>
+            <HBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                <Button fx:id="saveButton" text="Save zone" onAction="#handleSave" styleClass="primary"/>
+                <Button text="New" onAction="#handleNew"/>
+                <Button fx:id="deleteButton" text="Delete" onAction="#handleDelete" styleClass="danger"/>
+            </HBox>
+            <Label fx:id="messageLabel" styleClass="message" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>
