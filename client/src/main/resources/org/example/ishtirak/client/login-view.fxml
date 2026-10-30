@@ -33,6 +33,5 @@
         </HBox>
 
         <Label fx:id="messageLabel" styleClass="message" maxWidth="290"/>
-        <Label fx:id="serverLabel" styleClass="hint"/>
     </VBox>
 </StackPane>

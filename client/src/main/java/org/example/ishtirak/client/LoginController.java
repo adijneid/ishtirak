@@ -28,9 +28,6 @@ public class LoginController {
     private Label messageLabel;
 
     @FXML
-    private Label serverLabel;
-
-    @FXML
     private Button loginButton;
 
     private FormErrors errors;
@@ -44,7 +41,6 @@ public class LoginController {
         errors = new FormErrors(messageLabel)
                 .field("username", usernameError)
                 .field("password", passwordError);
-        serverLabel.setText("Server: " + ApiClient.get().getBaseUrl());
         if (pendingMessage != null) {
             messageLabel.setText(pendingMessage);
             pendingMessage = null;
